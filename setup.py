@@ -7,4 +7,8 @@ setup(
   author_email='chsnow123@gmail.com',
   url='https://github.com/snowch/cf_utils/',
   packages=['.'],
+  install_requires=[
+          'protobuf',
+          'cloudfoundry-client'
+      ],
 )
