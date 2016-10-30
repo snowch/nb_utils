@@ -75,7 +75,8 @@ class CloudFoundryUtil:
                 self.delete_service_keys(k)
                 
         if hasattr(si, 'metadata'):
-            self.client.service_instances.remove(si['metadata']['guid'])
+            if hasattr(si['metadata'], 'guid'):
+                self.client.service_instances.remove(si['metadata']['guid'])
         
     def get_service_instance(self, name):
         return self.client.service_instances.get_first(name=name)
