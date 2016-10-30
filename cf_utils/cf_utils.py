@@ -6,6 +6,7 @@ class CloudFoundryUtil:
         client = CloudFoundryClient(target_endpoint, skip_verification=False)
         client.init_with_user_credentials(username, password)
         self.client = client
+        self.target_endpoint = target_endpoint
     
     def list_spaces(self):
         s = []
@@ -45,7 +46,7 @@ class CloudFoundryUtil:
         return None
 
     def create_service_keys(self, service_instance, credentials_name = 'Credentials-1'):
-        url = target_endpoint + '/v2/service_keys'
+        url = self.target_endpoint + '/v2/service_keys'
         data = dict(
                   service_instance_guid = service_instance['metadata']['guid'],
                   name = credentials_name
@@ -61,7 +62,7 @@ class CloudFoundryUtil:
         return list(service_instance.service_keys())[0]['entity']['credentials'][credential_name]
     
     def delete_service_keys(self, service_keys_instance):
-        url = target_endpoint + '/v2/service_keys/' + service_keys_instance['metadata']['guid']
+        url = self.target_endpoint + '/v2/service_keys/' + service_keys_instance['metadata']['guid']
         response = service_keys_instance.client.delete(url)
         print(response.text)
         return response
