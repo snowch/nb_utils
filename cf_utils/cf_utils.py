@@ -69,11 +69,11 @@ class CloudFoundryUtil:
 
     def delete_service(self, service_instance_name, force=False):
         si = self.get_service_instance(service_instance_name)
-            
+        
         if force == True and si:
             for k in si.service_keys():
                 self.delete_service_keys(k)
-        self.client.service_instances.remove(si['metadata']['guid'])
+            self.client.service_instances.remove(si['metadata']['guid'])
         
     def get_service_instance(self, name):
         return self.client.service_instances.get_first(name=name)
