@@ -109,7 +109,7 @@ class MessageHubUtil:
     kafka_admin_url = self.cf.get_service_credential(messagehub_instance_name, 'kafka_admin_url')
     kafka_rest_url = self.cf.get_service_credential(messagehub_instance_name, 'kafka_rest_url')
     
-    return 
+    return  + \
       'bootstrap_servers={0}\n'.format(','.join(bootstrap_servers)) + \
       'sasl_username={0}\n'.format(sasl_username)) + \
       'sasl_password={0}\n'.format(sasl_password)) + \
