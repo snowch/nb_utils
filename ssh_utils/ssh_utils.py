@@ -30,7 +30,7 @@ class SshUtil:
     def cmd(self, command): 
         self.client.connect(self.hostname, 22, self.username, self.password)
         # kinit will fail on Basic clusters, but that can be ignored
-        self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(username))
+        self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(self.username))
         (stdin, stdout, stderr) = self.client.exec_command(command)
         for line in stdout.readlines():
             print line.rstrip()
@@ -42,7 +42,7 @@ class SshUtil:
         from scp import SCPClient
         self.client.connect(self.hostname, 22, self.username, self.password)
         # kinit will fail on Basic clusters, but that can be ignored
-        self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(username))
+        self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(self.username))
         with SCPClient(self.client.get_transport()) as scp:
             scp.put(filenames)
         scp.close()
@@ -51,6 +51,6 @@ class SshUtil:
         from scp import SCPClient
         self.client.connect(self.hostname, 22, self.username, self.password)
         # kinit will fail on Basic clusters, but that can be ignored
-        self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(username))
+        self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(self.username))
         with SCPClient(self.client.get_transport()) as scp:
             scp.get(filenames)
