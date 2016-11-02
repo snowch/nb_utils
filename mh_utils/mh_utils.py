@@ -9,6 +9,7 @@ class MessageHubUtil:
       import requests
       import json
       
+      kafka_admin_url = self.cf.get_service_credential(messagehub_instance_name, 'kafka_admin_url')
       api_key = self.cf.get_service_credential(messagehub_instance_name, 'api_key')
 
       data = { 'name' : topic_name }
