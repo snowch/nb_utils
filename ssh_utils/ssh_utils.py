@@ -29,7 +29,7 @@ class SshUtil:
 
         backends._available_backends_list = [ be for be in (be_cc, be_ossl) if be is not None ]
 
-    def ssh_cmd(self, command): 
+    def cmd(self, command): 
         self.client.connect(self.hostname, 22, self.username, self.password)
         # kinit will fail on Basic clusters, but that can be ignored
         self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(username))
@@ -40,7 +40,7 @@ class SshUtil:
             print line.rstrip()
         s.close()
         
-    def scp_put(self, filenames):
+    def put(self, filenames):
         from scp import SCPClient
         self.client.connect(self.hostname, 22, self.username, self.password)
         # kinit will fail on Basic clusters, but that can be ignored
@@ -49,7 +49,7 @@ class SshUtil:
             scp.put(filenames)
         scp.close()
 
-    def scp_get(self, filenames):
+    def get(self, filenames):
         from scp import SCPClient
         self.client.connect(self.hostname, 22, self.username, self.password)
         # kinit will fail on Basic clusters, but that can be ignored
