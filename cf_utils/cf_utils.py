@@ -2,11 +2,14 @@ from cloudfoundry_client.client import CloudFoundryClient
 
 class CloudFoundryUtil:
     
-    def __init__(self, target_endpoint, username, password):
+    def __init__(self, target_endpoint, username, password, organization_name, space_name):
         client = CloudFoundryClient(target_endpoint, skip_verification=False)
         client.init_with_user_credentials(username, password)
         self.client = client
         self.target_endpoint = target_endpoint
+        self.organization_name = organization_name
+        self.space_name = space_name
+        self.space_guid = self.get_space_guid(self.organization_name, self.space_name)
     
     def list_spaces(self):
         s = []
@@ -82,7 +85,7 @@ class CloudFoundryUtil:
             pass
         
     def get_service_instance(self, name):
-        return self.client.service_instances.get_first(name=name)
+        return self.client.service_instances.get_first(name=name, space_guid=self.space_guid)
         
     def get_service_plan(self, service_guid):
         return self.client.service_plans.get_first(service_guid=service_guid)
