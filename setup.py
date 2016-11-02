@@ -6,10 +6,11 @@ setup(
   author='Chris Snow',
   author_email='chsnow123@gmail.com',
   url='https://github.com/snowch/nb_utils/',
-  packages=['cf_utils', 'ssh_utils'],
+  packages=['cf_utils', 'ssh_utils', 'mh_utils'],
   install_requires=[
           'cloudfoundry-client',
           'paramiko',
-          'scp'
+          'scp',
+          'kafka-python'
       ],
 )
