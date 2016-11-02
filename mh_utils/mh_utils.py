@@ -83,7 +83,7 @@ class MessageHubUtil:
     context.options &= ssl.OP_NO_TLSv1
     context.options &= ssl.OP_NO_TLSv1_1
 
-    consumer = KafkaConsumer(topic_name,
+    consumer = KafkaConsumer(messagehub_topic_name,
                              bootstrap_servers = bootstrap_servers,
                              sasl_plain_username = sasl_plain_username,
                              sasl_plain_password = sasl_plain_password,
