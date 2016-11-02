@@ -22,6 +22,7 @@ class SshUtil:
         s = paramiko.SSHClient()
         s.load_system_host_keys()
         s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        
         self.client = s
         self.hostname = hostname
         self.username = username
@@ -36,7 +37,7 @@ class SshUtil:
             print line.rstrip()
         for line in stderr.readlines():
             print line.rstrip()
-        s.close()
+        self.client.close()
         
     def put(self, filenames):
         from scp import SCPClient
