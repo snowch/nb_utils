@@ -1,7 +1,7 @@
 class SshUtil:
     
     def __init__(self, hostname, username, password):
-      patch_crypto_be_discovery()
+      self.patch_crypto_be_discovery()
 
       import paramiko
       s = paramiko.SSHClient()
