@@ -100,7 +100,15 @@ class MessageHubUtil:
                                               message.offset, message.key,
                                               message.value))
                                               
-def get_properties(self, messagehub_instance_name):
+  def get_properties(self, messagehub_instance_name):
+  
+    bootstrap_servers = self.cf.get_service_credential(messagehub_instance_name, 'kafka_brokers_sasl')
+    sasl_plain_username = self.cf.get_service_credential(messagehub_instance_name, 'user')
+    sasl_plain_password = self.cf.get_service_credential(messagehub_instance_name, 'password')
+    api_key = self.cf.get_service_credential(messagehub_instance_name, 'api_key')
+    kafka_admin_url = self.cf.get_service_credential(messagehub_instance_name, 'kafka_admin_url')
+    kafka_rest_url = self.cf.get_service_credential(messagehub_instance_name, 'kafka_rest_url')
+    
     return 
       'bootstrap_servers={0}\n'.format(','.join(bootstrap_servers)) + \
       'sasl_username={0}\n'.format(sasl_username)) + \
