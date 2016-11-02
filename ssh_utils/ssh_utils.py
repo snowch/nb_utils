@@ -1,6 +1,7 @@
 class SshUtil:
-    
-    def patch_crypto_be_discovery(self):
+        
+    def __init__(self, hostname, username, password):
+        #### start patching crypto ####
         # Monkey patches cryptography's backend detection.
         from cryptography.hazmat import backends
 
@@ -15,18 +16,16 @@ class SshUtil:
             be_ossl = None
 
         backends._available_backends_list = [ be for be in (be_cc, be_ossl) if be is not None ]
-    
-    def __init__(self, hostname, username, password):
-      self.patch_crypto_be_discovery()
-
-      import paramiko
-      s = paramiko.SSHClient()
-      s.load_system_host_keys()
-      s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-      self.client = s
-      self.hostname = hostname
-      self.username = username
-      self.password = password
+        #### end patching crypto ####
+        
+        import paramiko
+        s = paramiko.SSHClient()
+        s.load_system_host_keys()
+        s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        self.client = s
+        self.hostname = hostname
+        self.username = username
+        self.password = password
     
     def cmd(self, command): 
         self.client.connect(self.hostname, 22, self.username, self.password)
