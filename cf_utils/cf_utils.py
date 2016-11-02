@@ -93,12 +93,11 @@ class CloudFoundryUtil:
     def get_service_plan_id(self, service_plan):
         return service_plan['metadata']['guid']
     
-    def create_service_instance(self, organization_name, space_name, service_plan_guid, service_name_to_create, create_default_credentials = True):
-        space_guid = self.get_space_guid(organization_name, space_name)
+    def create_service_instance(self, service_plan_guid, service_name_to_create, create_default_credentials = True):
         service_plan = self.get_service_plan(service_plan_guid)
         service_plan_id = self.get_service_plan_id(service_plan)
         service_instance = self.client.service_instances.create(
-            space_guid, 
+            self.space_guid, 
             service_name_to_create,
             service_plan_id
         )
