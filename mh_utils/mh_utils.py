@@ -3,7 +3,7 @@ from cf_utils import cf_utils
 class MessageHubUtil:
 
   def __init__(self, target_endpoint, username, password, organization_name, space_name):
-    self.cf = cf_utils.CloudFoundryUtil(target_endpoint, username, password, bluemix_organization_name, bluemix_space_name) 
+    self.cf = cf_utils.CloudFoundryUtil(target_endpoint, username, password, organization_name, space_name) 
    
   def create_topic(self, messagehub_instance_name, topic_name):
       import requests
