@@ -9,7 +9,7 @@ class MessageHubUtil:
     self.cf.create_service_instance(mh_service_plan_guid, messagehub_instance_name)
     
   def delete_service_instance(self, messagehub_instance_name, force=False):
-    self.cf.delete_service_instance(service_instance_name=messagehub_instance_name, force=force)
+    self.cf.delete_service(service_instance_name=messagehub_instance_name, force=force)
    
   def create_topic(self, messagehub_instance_name, topic_name):
       import requests
