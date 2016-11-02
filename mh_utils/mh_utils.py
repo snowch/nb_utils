@@ -3,7 +3,13 @@ from cf_utils import cf_utils
 class MessageHubUtil:
 
   def __init__(self, target_endpoint, username, password, organization_name, space_name):
-    self.cf = cf_utils.CloudFoundryUtil(target_endpoint, username, password, organization_name, space_name) 
+    self.cf = cf_utils.CloudFoundryUtil(target_endpoint, username, password, organization_name, space_name)
+    
+  def create_service_instance(self, mh_service_plan_guid, messagehub_instance_name):
+    self.cf.create_service_instance(mh_service_plan_guid, messagehub_instance_name)
+    
+  def delete_service_instance(self, messagehub_instance_name, force=False):
+    self.cf.delete_service_instance(service_instance_name=messagehub_instance_name, force=True)
    
   def create_topic(self, messagehub_instance_name, topic_name):
       import requests
