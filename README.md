@@ -22,6 +22,17 @@ ssh.cmd('ls -l local_file_on_notebook')
 !pip install --user --upgrade --quiet git+https://github.com/snowch/cf-python-client
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
+ibm_id = ...
+ibm_id_password = ...
+bluemix_organization_name = 'chris.snow@uk.ibm.com'
+bluemix_space_name = 'dev'
+
+#   https://api.ng.bluemix.net     - for the US South Region
+#   https://api.eu-gb.bluemix.net  - for the UK
+#   https://api.au-syd.bluemix.net - for Australia
+
+target_endpoint = 'https://api.ng.bluemix.net'
+
 cf = CloudFoundryUtil(target_endpoint, ibm_id, ibm_id_password, bluemix_org_name, bluemix_space_name)
 
 # get the service_guid for messagehub
@@ -46,6 +57,7 @@ bluemix_space_name = 'dev'
 #   https://api.au-syd.bluemix.net - for Australia
 
 target_endpoint = 'https://api.ng.bluemix.net'
+
 messagehub_instance_name = 'my_messagehub'
 messagehub_topic_name = 'my_topic'
 
