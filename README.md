@@ -37,8 +37,10 @@ cf = CloudFoundryUtil(target_endpoint, ibm_id, ibm_id_password, bluemix_org_name
 
 # get the service_guid for messagehub
 print(cf.search_plans('message hub'))
+# fe959ac5-aa47-43a6-9c58-6fc265ee9b0e
 
-# 'fe959ac5-aa47-43a6-9c58-6fc265ee9b0e'
+cf.create_service_instance(service_plan_guid, service_name_to_create, create_default_credentials = True)
+cf.delete_service(service_instance_name, force=False)
 ```
 
 ### messagehub utils
