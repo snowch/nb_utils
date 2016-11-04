@@ -1,5 +1,7 @@
 Some python utility functions I find useful when working with notebooks (though they can work standalone too).
 
+To see these scripts in context, take a look here: https://github.com/snowch/demo_2710
+
 ### ssh utils
 
 ```
