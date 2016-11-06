@@ -5,7 +5,6 @@ To see these scripts in context, take a look here: https://github.com/snowch/dem
 ### ssh utils
 
 ```
-!pip install --user --upgrade --quiet git+https://github.com/snowch/cf-python-client
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
 from ssh_utils import ssh_utils
@@ -21,7 +20,6 @@ ssh.cmd('ls -l local_file_on_notebook')
 ### cloudfoundry utils
 
 ```
-!pip install --user --upgrade --quiet git+https://github.com/snowch/cf-python-client
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
 ibm_id = ...
@@ -48,7 +46,6 @@ cf.delete_service(service_instance_name, force=False)
 ### messagehub utils
 
 ```
-!pip install --user --upgrade --quiet git+https://github.com/snowch/cf-python-client
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
 ibm_id = ...
