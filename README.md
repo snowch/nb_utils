@@ -4,9 +4,10 @@ To see these scripts in context, take a look here: https://github.com/snowch/dem
 
 ### ssh utils
 
-```{python}
+```{bash}
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
-
+```
+```{python}
 from ssh_utils import ssh_utils
 ssh = ssh_utils.SshUtil(hostname, username, password)
 
@@ -19,9 +20,10 @@ ssh.cmd('ls -l local_file_on_notebook')
 
 ### cloudfoundry utils
 
-```{python}
+```{bash}
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
-
+```
+```{python}
 ibm_id = ...
 ibm_id_password = ...
 bluemix_organization_name = 'chris.snow@uk.ibm.com'
@@ -46,9 +48,10 @@ cf.delete_service(service_instance_name, force=False)
 
 ### messagehub utils
 
-```{python}
+```{bash}
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
-
+```
+```{python}
 ibm_id = ...
 ibm_id_password = ...
 bluemix_organization_name = 'chris.snow@uk.ibm.com'
