@@ -44,10 +44,12 @@ class CloudFoundryUtil:
             return None
 
     def search_plans(self, string):
+        plans = []
         for sp in self.client.service_plans.list():
             if string in json.dumps(sp).lower():
-                return sp
-        return None
+                plans.append(sp)
+        
+        return plans
 
     def create_service_keys(self, service_instance, credentials_name = 'Credentials-1'):
         url = self.target_endpoint + '/v2/service_keys'
