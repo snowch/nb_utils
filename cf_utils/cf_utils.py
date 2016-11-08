@@ -80,12 +80,12 @@ class CloudFoundryUtil:
             for k in si.service_keys():
                 try:
                     self.delete_service_keys(k)
-                except:
-                    pass
+                except Exception, e:
+                    print(str(e))
         try:
             self.client.service_instances.remove(si['metadata']['guid'])
-        except:
-            pass
+        except Exception, e:
+            print(str(e))
         
     def get_service_instance(self, name):
         return self.client.service_instances.get_first(name=name, space_guid=self.space_guid)
