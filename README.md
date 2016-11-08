@@ -38,9 +38,13 @@ target_endpoint = 'https://api.ng.bluemix.net'
 from cf_utils import cf_utils
 cf = cf_utils.CloudFoundryUtil(target_endpoint, ibm_id, ibm_id_password, bluemix_organization_name, bluemix_space_name)
 
-# get the service_guid for messagehub
+# search the service plans for messagehub
 print(cf.search_plans('message hub'))
 # fe959ac5-aa47-43a6-9c58-6fc265ee9b0e
+
+# print out all of the service plans
+for plan in cf.client.service_plans.list():
+    print(plan)
 
 cf.create_service_instance(service_plan_guid, service_name_to_create, create_default_credentials = True)
 cf.delete_service(service_instance_name, force=False)
