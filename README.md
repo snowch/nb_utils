@@ -26,7 +26,7 @@ ssh.cmd('ls -l local_file_on_notebook')
 ```{python}
 ibm_id = ...
 ibm_id_password = ...
-bluemix_organization_name = 'chris.snow@uk.ibm.com'
+bluemix_org_name = 'chris.snow@uk.ibm.com'
 bluemix_space_name = 'dev'
 
 #   https://api.ng.bluemix.net     - for the US South Region
@@ -36,7 +36,7 @@ bluemix_space_name = 'dev'
 target_endpoint = 'https://api.ng.bluemix.net'
 
 from cf_utils import cf_utils
-cf = CloudFoundryUtil(target_endpoint, ibm_id, ibm_id_password, bluemix_org_name, bluemix_space_name)
+cf = cf_utils.CloudFoundryUtil(target_endpoint, ibm_id, ibm_id_password, bluemix_organization_name, bluemix_space_name)
 
 # get the service_guid for messagehub
 print(cf.search_plans('message hub'))
