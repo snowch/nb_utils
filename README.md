@@ -4,7 +4,7 @@ To see these scripts in context, take a look here: https://github.com/snowch/dem
 
 ### ssh utils
 
-```
+```{python}
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
 from ssh_utils import ssh_utils
@@ -19,7 +19,7 @@ ssh.cmd('ls -l local_file_on_notebook')
 
 ### cloudfoundry utils
 
-```
+```{python}
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
 ibm_id = ...
@@ -33,6 +33,7 @@ bluemix_space_name = 'dev'
 
 target_endpoint = 'https://api.ng.bluemix.net'
 
+from cf_utils import cf_utils
 cf = CloudFoundryUtil(target_endpoint, ibm_id, ibm_id_password, bluemix_org_name, bluemix_space_name)
 
 # get the service_guid for messagehub
@@ -45,7 +46,7 @@ cf.delete_service(service_instance_name, force=False)
 
 ### messagehub utils
 
-```
+```{python}
 !pip install --user --upgrade --quiet git+https://github.com/snowch/nb_utils
 
 ibm_id = ...
