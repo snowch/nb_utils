@@ -34,9 +34,9 @@ class SshUtil:
         self.client.exec_command('kinit -k -t {0}.keytab {0}@IBM.COM'.format(self.username))
         (stdin, stdout, stderr) = self.client.exec_command(command)
         for line in stdout.readlines():
-            print line.rstrip()
+            print(line.rstrip())
         for line in stderr.readlines():
-            print line.rstrip()
+            print(line.rstrip())
         self.client.close()
         
     def put(self, filenames):
