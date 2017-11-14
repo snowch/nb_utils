@@ -68,7 +68,7 @@ class CloudFoundryUtil:
         return list(service_instance.service_keys())[0]['entity']['credentials']
     
     def get_service_credential(self, service_name, credential_name):
-        return get_service_credentials(service_name)[credential_name]
+        return self.get_service_credentials(service_name)[credential_name]
     
     def delete_service_keys(self, service_keys_instance):
         url = self.target_endpoint + '/v2/service_keys/' + service_keys_instance['metadata']['guid']
